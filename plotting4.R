@@ -5,6 +5,7 @@ SCCcoal <- SCC[grepl("coal", SCC$Short.Name, ignore.case = T),]
 NEIcoal <- NEI[NEI$SCC %in% SCCcoal$SCC,]
 carvao <- aggregate(Emissions ~ year + type, NEIcoal, sum)
 
+##plotting
 png("plot4.png",width=480,height=480,units="px",bg="transparent")
 ggplot(carvao, aes(year, Emissions, col = type)) +
   geom_line() +

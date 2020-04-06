@@ -4,6 +4,7 @@ source("data store.R")
 bMotor <- subset(NEI, NEI$fips == "24510" & NEI$type == "ON-ROAD")
 bMotoradd <- aggregate(Emissions ~ year, bMotor, sum)
 
+##plotting
 png("plot5.png",width=480,height=480,units="px",bg="transparent")
 ggplot(bMotoradd, aes(year, Emissions)) +
   geom_line(col = "steelblue3") +
