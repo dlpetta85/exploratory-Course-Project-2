@@ -12,14 +12,17 @@ if(!(file.exists("summarySCC_PM25.rds") &&
   }  
   unzip(archiveFile) 
 }
+## This first line will likely take a few seconds. Be patient!
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 
 ##Working with the datafiles
 sampling <- c("year", "type", "Pollutant","SCC","fips")
-NEI[,sampling] <- lapply(NEI[,colToFactor], factor)
+NEI[,sampling] <- lapply(NEI[,sampling], factor)
 head(levels(NEI$fips))
 
 levels(NEI$fips)[1] = NA
-NEIdata<-NEI[complete.cases(NEI),]
+NEIdata <- NEI[complete.cases(NEI),]
 colSums(is.na(NEIdata))
+
+
