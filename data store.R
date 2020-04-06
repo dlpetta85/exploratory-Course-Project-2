@@ -1,6 +1,6 @@
 ##Libraries that will be used
 library(ggplot2)
-library(RColorBrewer)
+library(plyr)
 
 ## Creating and extracting the files
 if(!(file.exists("summarySCC_PM25.rds") && 
@@ -14,3 +14,12 @@ if(!(file.exists("summarySCC_PM25.rds") &&
 }
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
+
+##Working with the datafiles
+sampling <- c("year", "type", "Pollutant","SCC","fips")
+NEI[,sampling] <- lapply(NEI[,colToFactor], factor)
+head(levels(NEI$fips))
+
+levels(NEI$fips)[1] = NA
+NEIdata<-NEI[complete.cases(NEI),]
+colSums(is.na(NEIdata))
