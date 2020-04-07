@@ -6,5 +6,5 @@ numBalt <- aggregate(Emissions ~ year, baltimore, sum)
 
 ##plotting
 png("plot2.png",width=480,height=480,units="px",bg="transparent")
-plot(numBalt$year, numBalt$Emissions, type = "o", main = expression("Total Baltimore" ~ PM[2.5] ~ "Emissions by Year"), xlab = "Year", ylab = expression("Total Baltimore "~ PM[2.5] ~ "Emissions"), col = "steelblue3")
+barplot((numBalt$Emissions)/10^6, names.arg=numBalt$year, xlab="Year", ylab="PM2.5 Emissions (10^6 Tons)",main="Total PM2.5 Emissions From All Baltimore City Sources")
 dev.off()
