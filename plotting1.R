@@ -8,10 +8,5 @@ totEmissões
 ## Plotting
 png("plot1.png",width=480,height=480,units="px",bg="transparent")
 barplot(
-  (totEmissões$Emissions)/10^6,
-  names.arg=totEmissões$year,
-  xlab="Year",
-  ylab="PM2.5 Emissions (10^6 Tons)",
-  main="Total PM2.5 Emissions based on US Sources"
-)
+  (totEmissões$Emissions)/10^6, names.arg=totEmissões$year, xlab="Year", ylab="PM2.5 Emissions (10^6 Tons)", main="Total PM2.5 Emissions based on US Sources")
 dev.off()
